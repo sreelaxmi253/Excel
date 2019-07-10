@@ -10,13 +10,13 @@ public class ReadExcel {
 		Fillo fillo=new Fillo();
 		Connection conn=null;
 		try {
-			conn=fillo.getConnection("C:\\Users\\User1\\Downloads\\Book 3.xlsx");
+			conn=fillo.getConnection("C:\\Users\\User1\\Downloads\\data1.xlsx");
 			
 		}catch(FilloException e) {
 			throw new FilloException("File not found");
 			
 			}
-		String query = "Select * from sheet1 ";
+		String query = "Select * from data1 ";
 		Recordset rcrdset=null;
 		try {
 			rcrdset=conn.executeQuery(query);
@@ -26,13 +26,15 @@ public class ReadExcel {
 			
 		}
 		try {
-			System.out.println("Username"+ "\t" + "Password" + "\t\t" + "Mail_id"+  "\t\t\t\t" +"Mobile_no");
+			System.out.println("Date" + "\t\t\t" + "Open" + "\t\t\t" + "High"+  "\t\t\t" +"Low"+"\t\t"+"Close"+"\t\t"+"Shares Traded");
 			while(rcrdset.next()) {
 				
-				System.out.print(rcrdset.getField("User_name")+"\t\t ");
-				System.out.print(rcrdset.getField("Password")+"\t\t");
-				System.out.print(rcrdset.getField("Mail_id")+" \t\t");
-				System.out.print(rcrdset.getField("Mobile_no")+"\t\t");
+				System.out.print(rcrdset.getField("Date")+"\t\t ");
+				System.out.print(rcrdset.getField("Open")+"\t\t");
+				System.out.print(rcrdset.getField("High")+" \t\t");
+				System.out.print(rcrdset.getField("Low")+"\t\t");
+				System.out.print(rcrdset.getField("close")+"\t\t");
+				System.out.print(rcrdset.getField("shares Traded")+"\t\t");
 				System.out.println("\n");
 			}
 			
@@ -50,7 +52,8 @@ public class ReadExcel {
 				
 			
 		
-	}
+
 	
 
+}
 }
